@@ -1,0 +1,13 @@
+.social li {
+  display: inline-block;
+}
+
+.social__fa {
+  color: var(--onSurface);
+  transition: ease-in-out 1s;
+}
+
+.social__fa:hover {
+  color: var(--primary);
+  transform: translateY(-5px);
+}
