@@ -4,8 +4,6 @@ const fetchData = async () => {
   try {
     const data = await gqlClient.request(trending(1));
 
-    // const result = await data.json();
-
     return data;
   } catch (error) {
     console.log(error);
@@ -15,15 +13,17 @@ const fetchData = async () => {
 export default (req, res) => {
   const fetchFuck = async () => {
     const { trending: fuck } = await fetchData();
-
-    console.log(fuck.edges);
+    // const { trending: fuck } = await gqlClient.request(trending(1));
+    // console.log(fuck.edges);
 
     return fuck;
   };
 
-  fetchFuck();
+  const fuckinData = fetchFuck();
+  // console.log(fuckinData);
 
-  // console.log(edges?.trending?.trending);
-
-  res.status(200).json({ queryName: "Trending", query: trending });
+  res.status(200).json({
+    tryNum: 2,
+    fuckinData,
+  });
 };

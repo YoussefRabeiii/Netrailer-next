@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const trending = (first) => gql`
+export const trending = (first = 10) => gql`
   {
     trending(first: ${first}) {
       totalCount
@@ -21,4 +21,4 @@ export const trending = (first) => gql`
       }
     }
 }
-`
+`;
