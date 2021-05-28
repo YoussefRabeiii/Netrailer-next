@@ -1,31 +1,21 @@
 import Head from "next/head";
 
-import { gqlClient, trending } from "../graphQL";
 import { Header } from "@components";
 
 import styles from "../styles/Home.module.css";
 
 export const getStaticProps = async () => {
-  const fetchFuckinData = await fetch(
+  const fetchTrending = await fetch(
     "http://localhost:3000/api/graphql/trending"
   );
 
-  const fuckinData = await fetchFuckinData.json();
+  const trending = await fetchTrending.json();
 
-  // const fuckinData = await gqlClient.request(trending(1));
-  // .then((res) => res.json())
-  // .catch(console.log());
-
-  // console.log(fuckinData);
-
-  return {
-    props: { response: "Fuck you", fuckinData },
-  };
+  return { props: { trending } };
 };
 
-const Home = ({ response, fuckinData }) => {
-  // console.log(response);
-  console.log(fuckinData);
+const Home = ({ trending }) => {
+  console.log(trending);
 
   return (
     <main className={styles.home}>

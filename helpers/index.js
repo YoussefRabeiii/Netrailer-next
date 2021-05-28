@@ -1,0 +1,1 @@
+export { formatGQL } from "./formatGQL";

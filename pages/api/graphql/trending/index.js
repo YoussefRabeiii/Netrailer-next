@@ -1,29 +1,11 @@
-import { gqlClient, trending } from "../../../../graphQL";
+import { formatGQL } from "@helpers";
 
-const fetchData = async () => {
-  try {
-    const data = await gqlClient.request(trending(1));
+import { gqlClient, trendingQuery } from "@graphQL";
 
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+export default async (req, res) => {
+  const { trending } = await gqlClient.request(trendingQuery());
 
-export default (req, res) => {
-  const fetchFuck = async () => {
-    const { trending: fuck } = await fetchData();
-    // const { trending: fuck } = await gqlClient.request(trending(1));
-    // console.log(fuck.edges);
+  const formatedData = await formatGQL(trending);
 
-    return fuck;
-  };
-
-  const fuckinData = fetchFuck();
-  // console.log(fuckinData);
-
-  res.status(200).json({
-    tryNum: 2,
-    fuckinData,
-  });
+  res.status(200).json({ trending: formatedData });
 };

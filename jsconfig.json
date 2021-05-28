@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@components": ["components/index.js"],
-      "@util": ["util/index.js"],
+      "@helpers": ["helpers/index.js"],
       "@graphQL": ["graphQL/index.js"]
     }
   }

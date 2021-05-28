@@ -1,3 +1,3 @@
 export { gqlClient } from "./client";
 
-export { trending } from "./queries";
+export { trendingQuery } from "./queries";

@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const trending = (first = 10) => gql`
+export const trendingQuery = (first = 10) => gql`
   {
     trending(first: ${first}) {
       totalCount
