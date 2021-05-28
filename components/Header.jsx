@@ -1,13 +1,10 @@
-// import React, { useState, useEffect } from "react";
-
 // // import { VerticalNav } from "./";
 // // import Youtube from "react-youtube";
-// import { FaPlay } from "react-icons/fa";
-// import { strangerThingsCover } from "../images";
-// import { instance as axios, paths, imgBaseUrl } from "../api";
+// // import { FaPlay } from "react-icons/fa";
+// // import { strangerThingsCover } from "../images";
 // // import { instance as axios, paths, imgBaseUrl, API_KEY } from "../api";
 
-// import "./header.css";
+// // import "./header.css";
 // const Header = () => {
 //   const initialCover = {
 //     id: "66732",
