@@ -1,21 +1,27 @@
 import Head from "next/head";
 
 import { Header } from "@components";
+import { formatGQL } from "@helpers";
+import { gqlClient, trendingQuery } from "@graphQL";
 
 import styles from "../styles/Home.module.css";
 
 export const getStaticProps = async () => {
-  const fetchTrending = await fetch(
-    "http://localhost:3000/api/graphql/trending"
-  );
+  // Get 10 Trending Movies/Tv
+  const { trending } = await gqlClient.request(trendingQuery());
 
-  const trending = await fetchTrending.json();
+  const formatedTrending = await formatGQL(trending);
 
-  return { props: { trending } };
+  // Pick one random Movies/Tv
+  const random =
+    formatedTrending[Math.floor(Math.random() * formatedTrending.length - 1)];
+
+  return { props: { formatedTrending, random } };
 };
 
-const Home = ({ trending }) => {
-  console.log(trending);
+const Home = ({ formatedTrending, random }) => {
+  console.log(random);
+  console.log(formatedTrending);
 
   return (
     <main className={styles.home}>
