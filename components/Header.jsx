@@ -1,3 +1,5 @@
+import { FaPlay } from "react-icons/fa";
+
 import styles from "../styles/Header.module.css";
 
 const Header = ({ random }) => {
@@ -30,7 +32,7 @@ const Header = ({ random }) => {
             className={styles.header__continue}
             // onClick={(e) => onHeader(randomCover.isSeries, randomCover.id)}
           >
-            {/* <FaPlay className="fa header__icons" /> */}
+            <FaPlay className={styles.header__icons} />
             <h2>Continue Watching</h2>
             <h3>{name}</h3>
           </div>
@@ -38,7 +40,7 @@ const Header = ({ random }) => {
 
         <div className={styles.header__center}>
           <div className={styles.header__type}>
-            <h2>{type}</h2>
+            <h2>{type ? "Series" : "Movie"}</h2>
           </div>
 
           <h1 className={styles.header__title}>{name}</h1>
@@ -49,17 +51,15 @@ const Header = ({ random }) => {
 
           <div className={styles.header__watchLinks}>
             <div
-              className={(styles.header__watchLink, styles.header__watchLink_1)}
+              className={styles.header__watchLink}
               // onClick={(e) => onHeader(randomCover.isSeries, randomCover.id)}
             >
               <h2>
-                {/* <FaPlay className="fa header__icons" /> */}
+                <FaPlay className={styles.header__icons} />
                 Play
               </h2>
             </div>
-            <div
-              className={(styles.header__watchLink, styles.header__watchLink_2)}
-            >
+            <div className={styles.header__watchLink}>
               <h2>More info</h2>
             </div>
           </div>

@@ -8,9 +8,9 @@
   padding-inline-start: var(--navWidth) !important;
 }
 
-.header__continue h2,
 .header__title,
 .header__type h2,
+.header__continue h2,
 .header__description {
   color: #dedede;
 }
@@ -30,6 +30,8 @@
 
 .header__icons {
   font-size: 1.2em;
+  display: inline-block;
+  transition: ease-in-out 0.8s;
 }
 
 .header__continue:hover .header__icons {
@@ -66,8 +68,8 @@
 }
 
 .header__title {
-  margin: 15px 0;
   font-size: 4.5em;
+  margin-block-end: 15px;
 }
 
 .header__description {
@@ -108,6 +110,11 @@
   transition: ease-in-out 0.8s;
 }
 
+.header__watchLink:first-of-type {
+  border: 2px solid black;
+  background-color: var(--primary);
+}
+
 .header__watchLink h2 {
   width: 100%;
   height: 100%;
@@ -116,17 +123,14 @@
   transition: ease-in-out 0.8s;
 }
 
-.header__watchLink_1,
-.header__watchLink_2:hover {
+.header__watchLink:hover {
   border: 2px solid black;
-}
-
-.header__watchLink:hover h2 {
   background-color: var(--primary);
 }
 
 .header__watchLink h2 .header__icons {
   font-size: smaller;
+  margin-block-end: -2px;
   margin-inline-end: 10px;
 }
 
@@ -147,10 +151,9 @@
 
   .header__continue {
     text-align: center;
-    margin-block-start: 40px;
   }
 
-  .header__continue .header__icons {
+  .header__icons {
     font-size: 1em;
   }
   .header__continue h2 {
@@ -161,7 +164,7 @@
     font-weight: 500;
   }
 
-  .header__center .header__type {
+  .header__type {
     display: none;
   }
 
@@ -170,29 +173,45 @@
     margin-block-start: 60px;
   }
 
-  .header__center .header__type h2 {
+  .header__type h2 {
     margin: auto;
   }
 
-  .header__center .header__title {
+  .header__title {
     font-size: 3.5em;
+    margin-block-end: 40px;
+    margin-block-start: -40px;
   }
 
-  .header__center .header__description {
+  .header__description {
     width: 95%;
     margin: auto;
     padding: 10px;
     border-radius: 10px;
   }
 
-  .header__center .header__watchLinks {
+  .header__watchLinks {
     display: grid;
     padding: 50px 25px;
     grid-template-columns: 1fr 1fr;
   }
 
-  .header__center .header__watchLink {
+  .header__watchLink {
     padding: 0;
     margin: auto;
+  }
+}
+
+@media (max-width: 625px) {
+  .header__top {
+    margin-inline-start: 20px;
+  }
+
+  .header__title {
+    font-size: 3em;
+  }
+
+  .header__description {
+    font-size: 1.1em;
   }
 }
