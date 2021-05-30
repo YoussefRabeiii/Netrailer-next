@@ -12,23 +12,23 @@ export const getStaticProps = async () => {
   const { movies, series } = data;
 
   // Add the type field to every movie
-  const typedMovies = movies.map((movie) => {
-    return {
-      ...movie,
-      type: "movie",
-    };
-  });
+  // const typedMovies = movies.map((movie) => {
+  //   return {
+  //     ...movie,
+  //     type: "Movie",
+  //   };
+  // });
 
   // Add the type field to every series
   const typedSeries = series.map((series) => {
     return {
       ...series,
-      type: "tv",
+      type: "Series",
     };
   });
 
   // Combine all of the Movies and Series
-  const allTrending = [...typedMovies, ...typedSeries];
+  const allTrending = [...movies, ...typedSeries];
 
   // The comparison meter
   const compare = (a, b) => {
@@ -50,13 +50,13 @@ export const getStaticProps = async () => {
   const trending = allTrending.sort(compare);
 
   // Pick one random Movies/Tv
-  // const random = getRandom(trending);
+  const random = getRandom(trending);
 
-  return { props: { trending } };
+  return { props: { random } };
 };
 
-const Home = ({ trending }) => {
-  console.table(trending);
+const Home = ({ random }) => {
+  console.table(random);
 
   return (
     <main className={styles.home}>
@@ -64,7 +64,7 @@ const Home = ({ trending }) => {
         <title>Netrailer</title>
       </Head>
 
-      <Header />
+      <Header random={random} />
 
       <h1>Home</h1>
     </main>
