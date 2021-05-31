@@ -1,3 +1,5 @@
+import { hyphenize } from "@helpers";
+import Link from "next/link";
 import { FaPlay } from "react-icons/fa";
 
 import styles from "../styles/Header.module.css";
@@ -60,7 +62,15 @@ const Header = ({ random }) => {
               </h2>
             </div>
             <div className={styles.header__watchLink}>
-              <h2>More info</h2>
+              <h2>
+                <Link
+                  href={`/${type ? "series" : "movies"}/${hyphenize(
+                    name
+                  )}-${id}`}
+                >
+                  More info
+                </Link>
+              </h2>
             </div>
           </div>
         </div>

@@ -46,7 +46,6 @@ export const trendingQuery = (page = 1) => gql`
       }
     }
   }
-
 `;
 
 // All Movies and Series Genres

@@ -52,7 +52,10 @@ export const getStaticProps = async () => {
   // Pick one random Movies/Tv
   const random = getRandom(trending);
 
-  return { props: { random } };
+  return {
+    props: { random },
+    revalidate: 60, // Seconds // For ISR
+  };
 };
 
 const Home = ({ random }) => {
