@@ -1,15 +1,22 @@
 export { swiftClient, jsClient } from "./client";
 
 // The queries for the Swift API
-export { getTVShowQuery } from "./swiftQueries";
+export {
+  trendingQuery,
+  genresQuery,
+  withGenresQuery,
+  getMovieQuery,
+  getTVShowQuery,
+  searchQuery,
+  getPeopleQuery,
+  getTrendingPeopleQuery,
+} from "./swiftQueries";
 
 // The queries for the Typescript API
-export {
-  getTvQuery,
-  genresQuery,
-  searchQuery,
-  trendingQuery,
-  getMovieQuery,
-  getPersonQuery,
-  withGenresQuery,
-} from "./jsQueries";
+export { trendingQuery as jstrendingQuery } from "./jsQueries";
+//   getTvQuery,
+//   genresQuery,
+//   searchQuery,
+//   getMovieQuery,
+//   getPersonQuery,
+//   withGenresQuery,
