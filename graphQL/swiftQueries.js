@@ -11,8 +11,10 @@ export const trendingQuery = (limit = 10) => gql`
             name: title
             overview
             homepage
+            type: __typename
             poster(size: Original)
             backdrop(size: Original)
+            popularity: popularityIndex
 
             externalIds {
               tmdb
@@ -42,8 +44,10 @@ export const trendingQuery = (limit = 10) => gql`
             name
             overview
             homepage
+            type: __typename
             poster(size: Original)
             backdrop(size: Original)
+            popularity: popularityIndex
             
             externalIds {
               tmdb

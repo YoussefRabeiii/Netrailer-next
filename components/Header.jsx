@@ -9,17 +9,20 @@ const Header = ({ random }) => {
     id,
     name,
     type,
-    videos,
-    poster,
-    tagline,
-    overview,
+    // videos,
+    // poster,
+    homepage,
     backdrop,
-    popularity,
+    // networks,
+    overview,
+    // popularity,
+    // externalIds,
+    // productionCompanies,
   } = random;
 
   return (
     <header
-      style={{ backgroundImage: `url(${backdrop.large})` }}
+      style={{ backgroundImage: `url(${backdrop})` }}
       className={styles.header}
     >
       {/*
@@ -30,19 +33,18 @@ const Header = ({ random }) => {
 
       <div className={styles.header__content}>
         <div className={styles.header__top}>
-          <div
-            className={styles.header__continue}
-            // onClick={(e) => onHeader(randomCover.isSeries, randomCover.id)}
-          >
-            <FaPlay className={styles.header__icons} />
-            <h2>Continue Watching</h2>
-            <h3>{name}</h3>
-          </div>
+          <a href={homepage}>
+            <div className={styles.header__continue}>
+              <FaPlay className={styles.header__icons} />
+              <h2>Continue Watching</h2>
+              <h3>{name}</h3>
+            </div>
+          </a>
         </div>
 
         <div className={styles.header__center}>
           <div className={styles.header__type}>
-            <h2>{type ? "Series" : "Movie"}</h2>
+            <h2>{type === "TVShow" ? "Series" : "Movie"}</h2>
           </div>
 
           <h1 className={styles.header__title}>{name}</h1>
@@ -64,9 +66,9 @@ const Header = ({ random }) => {
             <div className={styles.header__watchLink}>
               <h2>
                 <Link
-                  href={`/${type ? "series" : "movies"}/${hyphenize(
-                    name
-                  )}-${id}`}
+                  href={`/${
+                    type === "TVShow" ? "series" : "movies"
+                  }/${hyphenize(name)}-${id}`}
                 >
                   More info
                 </Link>

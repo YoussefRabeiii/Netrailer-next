@@ -1,53 +1,24 @@
 import Head from "next/head";
 
 import { Header } from "@components";
-import { formatGQL, getRandom } from "@helpers";
-import { swiftClient, jsClient, trendingQuery } from "@graphQL";
+import { swiftClient, trendingQuery } from "@graphQL";
+import { formatGQL, compareByPopularity, getRandom } from "@helpers";
 
 import styles from "../styles/Home.module.css";
 
 export const getStaticProps = async () => {
   // Get 20 Trending Movies/Tv
-  const data = await jsClient.request(trendingQuery());
-  const { movies, series } = data;
+  const { movies, series } = await swiftClient.request(trendingQuery(15));
 
-  // Add the type field to every movie
-  // const typedMovies = movies.map((movie) => {
-  //   return {
-  //     ...movie,
-  //     type: "Movie",
-  //   };
-  // });
-
-  // Add the type field to every series
-  const typedSeries = series.map((series) => {
-    return {
-      ...series,
-      type: "Series",
-    };
-  });
+  // Format the data (DeStructure)
+  const formatedMovies = await formatGQL(movies.trending);
+  const formatedSeries = await formatGQL(series.trending);
 
   // Combine all of the Movies and Series
-  const allTrending = [...movies, ...typedSeries];
-
-  // The comparison meter
-  const compare = (a, b) => {
-    const popularityA = a.popularity;
-    const popularityB = b.popularity;
-
-    let comparison = 0;
-    if (popularityA > popularityB) {
-      comparison = 1;
-    } else if (popularityA < popularityB) {
-      comparison = -1;
-    }
-
-    // The times -1 to be in desc. order
-    return comparison * -1;
-  };
+  const allTrending = [...formatedMovies, ...formatedSeries];
 
   // Sort the array by popularity
-  const trending = allTrending.sort(compare);
+  const trending = allTrending.sort(compareByPopularity);
 
   // Pick one random Movies/Tv
   const random = getRandom(trending);
