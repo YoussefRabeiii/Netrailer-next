@@ -6,7 +6,7 @@ import { formatGQL, compareByPopularity, getRandom } from "@helpers";
 
 import styles from "../styles/Home.module.css";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   // Get 20 Trending Movies/Tv
   const { movies, series } = await swiftClient.request(trendingQuery(15));
 
@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { random },
-    revalidate: 60, // Seconds // For ISR
+    // revalidate: 60, // Seconds // For ISR
   };
 };
 
