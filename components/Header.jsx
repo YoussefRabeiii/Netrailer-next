@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { hyphenize } from "@helpers";
 
@@ -10,6 +10,10 @@ import styles from "../styles/Header.module.css";
 
 const Header = ({ random }) => {
   const [trailerKey, setTrailerKey] = useState(null);
+
+  useEffect(() => {
+    console.log(`🔑: ${trailerKey}`);
+  }, [trailerKey]);
 
   const {
     id,
@@ -45,6 +49,7 @@ const Header = ({ random }) => {
             onPause={() => setTrailerKey(null)}
             className={styles.header__trailer__video}
             opts={{
+              host: "https://netrailer.vercel.app",
               playerVars: {
                 fs: 0, // Full Screen
                 rel: 0, // Related Videos (will come from the same channel only)
@@ -54,6 +59,7 @@ const Header = ({ random }) => {
                 controls: 0,
                 disablekb: 1, // Disable Keyboard
                 playsinline: 1,
+                // enablejsapi: 1,
                 modestbranding: 1, // Remove Youtube Logo (From the controls)
               },
             }}
