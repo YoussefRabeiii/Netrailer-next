@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 
 import { hyphenize } from "@helpers";
 
-import Youtube from "react-youtube";
+// import Youtube from "react-youtube";
 import { FaPlay, FaStop } from "react-icons/fa";
 
 import styles from "../styles/Header.module.css";
 
 const Header = ({ random }) => {
-  const [trailerKey, setTrailerKey] = useState(null);
+  // const [trailerKey, setTrailerKey] = useState(null);
 
-  useEffect(() => {
-    console.log(`🔑: ${trailerKey}`);
-  }, [trailerKey]);
+  // useEffect(() => {
+  //   console.log(`🔑: ${trailerKey}`);
+  // }, [trailerKey]);
 
   const {
     id,
@@ -41,7 +41,8 @@ const Header = ({ random }) => {
         </div>
       */}
 
-      {trailerKey && (
+      // Header Trailer
+      {/* {trailerKey && (
         <div className={styles.header__trailer}>
           <Youtube
             videoId={trailerKey}
@@ -49,7 +50,7 @@ const Header = ({ random }) => {
             onPause={() => setTrailerKey(null)}
             className={styles.header__trailer__video}
             opts={{
-              host: "https://netrailer.vercel.app",
+              // host: "https://netrailer.vercel.app",
               playerVars: {
                 fs: 0, // Full Screen
                 rel: 0, // Related Videos (will come from the same channel only)
@@ -65,11 +66,11 @@ const Header = ({ random }) => {
             }}
           />
         </div>
-      )}
+      )} */}
 
       <div
         className={styles.header__content}
-        style={trailerKey ? { opacity: "50%" } : null}
+        // style={trailerKey ? { opacity: "50%" } : null}
       >
         <div className={styles.header__top}>
           <a href={homepage || ""} target="_blank">
@@ -95,21 +96,24 @@ const Header = ({ random }) => {
           <div className={styles.header__watchLinks}>
             <div
               className={styles.header__watchLink}
-              onClick={() =>
-                setTrailerKey(
-                  trailerKey
-                    ? null
-                    : videos?.find((video) => video.type === "Trailer").key
-                )
-              }
+              // onClick={() =>
+              //   setTrailerKey(
+              //     trailerKey
+              //       ? null
+              //       : videos?.find((video) => video.type === "Trailer").key
+              //   )
+              // }
             >
               <h2>
-                {trailerKey ? (
+                <FaPlay className={styles.header__icons} />
+                {/* {trailerKey ? (
                   <FaStop className={styles.header__icons} />
                 ) : (
                   <FaPlay className={styles.header__icons} />
-                )}
-                {trailerKey ? "Stop" : "Play"}
+                )} */}
+
+                {/* {trailerKey ? "Stop" : "Play"} */}
+                Play
               </h2>
             </div>
             <div className={styles.header__watchLink}>
