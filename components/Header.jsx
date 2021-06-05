@@ -41,7 +41,7 @@ const Header = ({ random }) => {
         </div>
       */}
 
-      // Header Trailer
+      {/* Header Trailer */}
       {/* {trailerKey && (
         <div className={styles.header__trailer}>
           <Youtube
@@ -111,7 +111,6 @@ const Header = ({ random }) => {
                 ) : (
                   <FaPlay className={styles.header__icons} />
                 )} */}
-
                 {/* {trailerKey ? "Stop" : "Play"} */}
                 Play
               </h2>

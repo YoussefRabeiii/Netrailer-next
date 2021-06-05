@@ -92,8 +92,8 @@ export const genresQuery = () => gql`
   }
 `;
 
-// Get Movies/Series by Genres
-export const withGenresQuery = (id, limit = 10) => gql`
+// Get Movies/Series by Genre ID
+export const withGenreQuery = (id, limit = 10) => gql`
   {
     node(id: ${id}) {
       ... on Genre {
@@ -456,7 +456,7 @@ export const getPeopleQuery = (id) => gql`
 `;
 
 // Get Trending People
-export const getTrendingPeopleQuery = (limit) => gql`
+export const getTrendingPeopleQuery = (limit = 10) => gql`
   {
     people {
       trending(first: ${limit}) {
@@ -518,4 +518,91 @@ export const getTrendingPeopleQuery = (limit) => gql`
       }
     }
   }
+`;
+
+/* *********************** Minified ************************ */
+
+// Get Movies/Series By Genre ID
+export const minifiedWithGenreQuery = (id, limit = 10) => gql`
+  {
+    node(id: "${id}") {
+      ... on Genre {
+        id
+        name
+        movies {
+          popular(first: ${limit}) {
+            edges {
+              node {
+                id
+                name: title
+                type: __typename
+                poster(size: Original)
+                backdrop(size: Original)
+                popularity: popularityIndex
+                
+                videos {
+                  id
+                  key
+                  name
+                  type
+                }
+              }
+            }
+          }
+        }
+
+        series: tv {
+          popular(first: ${limit}) {
+            edges {
+              node {
+                id
+                name
+                type: __typename
+                poster(size: Original)
+                backdrop(size: Original)
+                popularity: popularityIndex
+
+                videos {
+                  id
+                  key
+                  name
+                  type
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const minifiedWithNetworkQuery = (id, limit = 20) => gql`
+  {
+    node(id: ${id}) {
+      ... on Network {
+        id
+        name
+        series: tv {
+          popular(first: ${limit}) {
+            edges {
+              node {
+                id
+                name
+                type: __typename
+                poster(size:Original)
+                backdrop(size:Original)
+                
+                videos {
+                  id
+                  key
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
 `;
