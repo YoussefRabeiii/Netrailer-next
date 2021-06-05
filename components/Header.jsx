@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 import { hyphenize } from "@helpers";
 
 // import Youtube from "react-youtube";
-import { FaPlay, FaStop } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 
 import styles from "../styles/Header.module.css";
 

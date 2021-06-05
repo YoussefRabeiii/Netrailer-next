@@ -8,7 +8,7 @@
   padding-inline-start: var(--navWidth) !important;
 }
 
-.header__trailer {
+/* .header__trailer {
   top: 0;
   left: 0;
   width: 100%;
@@ -20,7 +20,7 @@
 .header__trailer__video {
   width: 100%;
   height: 100vh !important;
-}
+} */
 
 .header__content {
   z-index: 500;
@@ -133,10 +133,10 @@
   transition: ease-in-out 0.8s;
 }
 
-.header__watchLink:first-of-type {
+/* .header__watchLink:first-of-type {
   border: 2px solid black;
   background-color: var(--primary);
-}
+} */ 
 
 .header__watchLink h2 {
   width: 100%;
