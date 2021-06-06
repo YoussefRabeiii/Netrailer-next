@@ -523,14 +523,18 @@ export const getTrendingPeopleQuery = (limit = 10) => gql`
 /* *********************** Minified ************************ */
 
 // Get Movies/Series By Genre ID
-export const minifiedWithGenreQuery = (id, limit = 10) => gql`
+export const minifiedWithGenreQuery = (
+  id,
+  moviesLimit = 10,
+  seriesLimit = 10
+) => gql`
   {
     node(id: "${id}") {
       ... on Genre {
         id
         name
         movies {
-          popular(first: ${limit}) {
+          popular(first: ${moviesLimit}) {
             edges {
               node {
                 id
@@ -552,7 +556,7 @@ export const minifiedWithGenreQuery = (id, limit = 10) => gql`
         }
 
         series: tv {
-          popular(first: ${limit}) {
+          popular(first: ${seriesLimit}) {
             edges {
               node {
                 id
