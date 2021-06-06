@@ -4,7 +4,7 @@ import { Header } from "@components";
 import { formatGQL, getRandom } from "@helpers";
 import { swiftClient, jsClient, jstrendingQuery } from "@graphQL";
 
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 export const getStaticProps = async () => {
   // Get 20 Trending Movies/Tv
