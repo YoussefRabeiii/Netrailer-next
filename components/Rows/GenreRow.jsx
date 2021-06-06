@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { formatGQL, compareByPopularity } from "@helpers";
 import { minifiedWithGenreQuery, swiftClient } from "@graphQL";
@@ -14,60 +14,63 @@ const GenreRow = ({
 }) => {
   const [genre, setGenre] = useState({});
 
-  const fetch = async (
-    genreID,
-    moviesLimit,
-    seriesLimit,
-    hasMovies,
-    hasSeries
-  ) => {
-    // Get Movies/Series by Genre ID
-    const { node: fetchGenre } = await swiftClient.request(
-      minifiedWithGenreQuery(genreID, moviesLimit, seriesLimit)
-    );
+  useEffect(() => {
+    const fetch = async (
+      genreID,
+      moviesLimit,
+      seriesLimit,
+      hasMovies,
+      hasSeries
+    ) => {
+      // Get Movies/Series by Genre ID
+      const { node: fetchGenre } = await swiftClient.request(
+        minifiedWithGenreQuery(genreID, moviesLimit, seriesLimit)
+      );
 
-    // Format the data (DeStructure)
-    const { id, name: genreName } = fetchGenre;
+      // Format the data (DeStructure)
+      const { id, name: genreName } = fetchGenre;
 
-    const genreMovies = hasMovies
-      ? await formatGQL(fetchGenre.movies.popular)
-      : [];
-    const genreSeries = hasSeries
-      ? await formatGQL(fetchGenre.series.popular)
-      : [];
+      const genreMovies = hasMovies
+        ? await formatGQL(fetchGenre.movies.popular)
+        : [];
+      const genreSeries = hasSeries
+        ? await formatGQL(fetchGenre.series.popular)
+        : [];
 
-    // Combine all of the Movies and Series
-    const allGenre = [...genreMovies, ...genreSeries];
+      // Combine all of the Movies and Series
+      const allGenre = [...genreMovies, ...genreSeries];
 
-    // Sort the array by popularity
-    const genreData = allGenre.sort(compareByPopularity);
+      // Sort the array by popularity
+      const genreData = allGenre.sort(compareByPopularity);
 
-    // console.table(genre);
-    // console.log({
-    //   id,
-    //   genreData,
-    //   genreName,
-    // });
+      // console.table(genre);
+      // console.log({
+      //   id,
+      //   genreData,
+      //   genreName,
+      // });
 
-    setGenre({
-      id,
-      genreData,
-      genreName,
-    });
+      setGenre({
+        id,
+        genreData,
+        genreName,
+      });
 
-    return {
-      id,
-      genreData,
-      genreName,
+      return {
+        id,
+        genreData,
+        genreName,
+      };
     };
-  };
 
-  fetch(genreID, moviesLimit, seriesLimit, hasMovies, hasSeries);
+    fetch(genreID, moviesLimit, seriesLimit, hasMovies, hasSeries);
+  }, []);
 
-  // const { id, genreName, genreData } = genre;
+  const { id, genreName, genreData } = genre;
+
   return (
     <div>
-      <h1>This the {genre && genre.genreName} Row</h1>
+      <h1>This the {genreName} Row</h1>
     </div>
   );
 };
