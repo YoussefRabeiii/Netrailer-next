@@ -64,10 +64,10 @@ const GenreRow = ({
 
   fetch(genreID, moviesLimit, seriesLimit, hasMovies, hasSeries);
 
-  const { id, genreName, genreData } = genre;
+  // const { id, genreName, genreData } = genre;
   return (
     <div>
-      <h1>This the {genreName} Row</h1>
+      <h1>This the {genre && genre.genreName} Row</h1>
     </div>
   );
 };

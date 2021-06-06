@@ -52,8 +52,6 @@ const Home = ({ trending, random }) => {
       <GenreRow hasMovies hasSeries genreID="NToxMDc1MQ==" />
       <GenreRow hasMovies hasSeries genreID="NToxMDc0OQ==" />
       <GenreRow hasMovies hasSeries genreID="NTo4Nzg=" />
-
-      <h1>Home</h1>
     </main>
   );
 };
